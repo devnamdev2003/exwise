@@ -5,12 +5,15 @@ import com.exwise.exwise.dto.response.ApiResponse;
 import com.exwise.exwise.entity.Category;
 import com.exwise.exwise.repository.CategoryRepository;
 import com.exwise.exwise.service.CategoryService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import com.exwise.exwise.entity.Expense;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -24,6 +27,10 @@ public class CategoryServiceImpl implements CategoryService {
         dto.setName(category.getName());
         dto.setIcon(category.getIcon());
         dto.setColor(category.getColor());
+        dto.setIsActive(category.isIsActive());
+        dto.setCreatedAt(category.getCreatedAt());
+        dto.setUpdatedAt(category.getUpdatedAt());
+        dto.setUser_id(category.getUser_id());
         return dto;
     }
 
@@ -33,6 +40,10 @@ public class CategoryServiceImpl implements CategoryService {
         category.setName(dto.getName());
         category.setIcon(dto.getIcon());
         category.setColor(dto.getColor());
+        category.setIsActive(dto.isIsActive());
+        category.setUser_id(dto.getUser_id());
+        category.setCreatedAt(dto.getCreatedAt());
+        category.setUpdatedAt(dto.getUpdatedAt());
         return category;
     }
 
@@ -85,7 +96,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public  ApiResponse<CategoryDTO> deleteCategory(Integer id) {
+    public ApiResponse<CategoryDTO> deleteCategory(Integer id) {
         Optional<Category> optional = categoryRepository.findById(id);
         if (optional.isEmpty()) {
             return new ApiResponse<>("error", 404, "Category not found", null, true);

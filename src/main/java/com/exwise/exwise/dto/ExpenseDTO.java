@@ -23,6 +23,5 @@ public class ExpenseDTO {
     private String location;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
-    // Getters and Setters
+    private Long user_id;
 }

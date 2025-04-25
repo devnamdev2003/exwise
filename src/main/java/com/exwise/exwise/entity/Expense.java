@@ -31,6 +31,14 @@ public class Expense {
     )
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "user_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "fk_user")
+    )
+    private User user;
+
     @Column(length = 100)
     private String subcategory;
 
@@ -54,7 +62,6 @@ public class Expense {
     @Column(name = "updated_at", columnDefinition = "TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    // Getters and Setters
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();

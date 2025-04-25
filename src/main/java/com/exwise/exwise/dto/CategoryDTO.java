@@ -1,5 +1,7 @@
 package com.exwise.exwise.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +13,16 @@ public class CategoryDTO {
     private String name;
     private String icon;
     private String color;
+    private boolean isActive;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private Long user_id;
 
-    // Getters and Setters
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
 }
