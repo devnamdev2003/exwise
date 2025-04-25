@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MyClass {
+public class Test {
 
 	@GetMapping("/abc")
 	public String myMethod() {
-		return "Hello, World!";
+		return "Hello, dev!";
 	}
 
 }
